@@ -6,10 +6,7 @@ import {useState} from "react";
 export const Modal = ({
 	active,
 	setActive,
-	initialValue,
-	onChange,
 	onClick,
-	disabled,
 }) => {
 	const [clear, setClear] = useState(false);
 	const openModal = () => {
@@ -31,11 +28,8 @@ export const Modal = ({
 			>
 				<div className={styles.body} onClick={(e) => e.stopPropagation()}>
 					<InputWithButton
-						initialValue={initialValue}
-						onChange={onChange}
 						clear={clear}
 						onClick={handleClick}
-						disabled={disabled}
 						placeholder='Создать новую задачу...'
 						buttonText='Создать'
 						buttonType='submit'

@@ -1,20 +1,25 @@
 import styles from './input-with-button.module.css';
 import { Input } from './input';
 import { Button } from '../button/button';
-import { useState } from 'react';
+import {useContext, useState} from 'react';
+import {ModalContext} from "../../../context";
 
 export const InputWithButton = ({
-	onChange,
 	placeholder,
 	buttonText,
-	disabled,
 	onBlur,
-	initialValue,
 	onClick,
 	buttonType,
 	clear,
 	buttonClassName,
 }) => {
+
+	const {
+		initialValue,
+		onChange,
+		disabled,
+	} = useContext(ModalContext);
+
 	const [value, setValue] = useState(initialValue || '');
 	const onSubmit = (e) => {
 		e.preventDefault();

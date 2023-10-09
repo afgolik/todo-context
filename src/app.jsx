@@ -14,7 +14,7 @@ import {
 import { Modal } from './components/ui/modal/modal';
 import { Search } from "./components/ui/search/search";
 import { Button } from "./components/ui/button/button";
-import { TodoContext } from "./context";
+import {ModalContext, TodoContext} from "./context";
 
 export const App = () => {
 	const [modalActive, setModalActive] = useState(false);
@@ -40,18 +40,23 @@ export const App = () => {
 		onBlur: requestUpdateTodo,
 	};
 
+	const modalContextValue = {
+		initialValue: addInputValue,
+		onChange: setAddInputValue,
+		disabled: isCreated,
+	};
+
 	return (
 		<div className={styles.app}>
 			<Search onClick={searchingTodo} isSearched={isSearched} onReset={onReset} />
 			<div className={styles.buttonBlock}>
-				<Modal
-					active={modalActive}
-					setActive={setModalActive}
-					initialValue={addInputValue}
-					onChange={setAddInputValue}
-					onClick={requestAddTodo}
-					disabled={isCreated}
-				/>
+				<ModalContext.Provider value={modalContextValue}>
+					<Modal
+						active={modalActive}
+						setActive={setModalActive}
+						onClick={requestAddTodo}
+					/>
+				</ModalContext.Provider>
 				<Button text={isSorted ? 'Не сортировать' : 'Отсортировать'} onClick={sortTodo} className={isSorted ? styles.sortButton : null} />
 			</div>
 			<TodoContext.Provider value={todoContextValue}>
