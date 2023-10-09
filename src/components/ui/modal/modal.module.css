@@ -1,0 +1,30 @@
+.modal {
+	display: flex;
+	margin-bottom: 30px;
+}
+.window {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+	transform: scale(0);
+}
+.body {
+	width: 1000px;
+	height: 200px;
+	border-radius: 5px;
+	background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+}
+.active {
+	transform: scale(1);
+}

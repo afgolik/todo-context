@@ -1,0 +1,93 @@
+.text {
+	font-size: 2rem;
+	line-height: 2.5rem;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+.checkbox + label {
+	display: block;
+	margin: 0.2em;
+	cursor: pointer;
+	padding: 0.2em;
+}
+.checkbox {
+	display: none;
+}
+.checkbox + label:before {
+	content: '\2714';
+	border: 0.1em solid var(--checkbox-border-color);
+	border-radius: 0.2em;
+	display: inline-flex;
+	width: 1.5em;
+	height: 1.5em;
+	padding-left: 0;
+	padding-bottom: 0;
+	padding-top: 1px;
+	margin-right: 0.2em;
+	vertical-align: bottom;
+	color: transparent;
+	transition: 0.2s;
+	align-items: center;
+	justify-content: center;
+}
+.checkbox + label:active:before {
+	transform: scale(0);
+}
+.checkbox:checked + label:before {
+	background-color: var(--checkbox-checked-background);
+	border-color: var(--checkbox-checked-background);
+	color: var(--checkbox-text-color);
+}
+.checkbox:disabled + label:before {
+	transform: scale(1);
+	cursor: default;
+	opacity: 0.3;
+}
+.checkbox:checked:disabled + label:before {
+	transform: scale(1);
+	background-color: var(--checkbox-checked-background);
+	border-color: var(--checkbox-checked-background);
+}
+.item {
+	width: 100%;
+	font-size: 1.5rem;
+	line-height: 2.5rem;
+	border-bottom: 2px solid var(--primary-color);
+	padding: 10px 0;
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+}
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.content {
+	display: flex;
+	align-items: center;
+	width: calc(100% - 147px);
+}
+.done {
+	text-decoration: line-through;
+}
+.buttons {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.change span {
+	display: block;
+	transform: scaleX(-1);
+	font-size: 18px;
+}
+.button.change:hover {
+	background-color: #2d6b25;
+}
+.button.edit:hover {
+	background-color: #2d6b25;
+}
+.button.delete:hover {
+	background-color: brown;
+}

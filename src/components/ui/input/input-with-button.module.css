@@ -1,0 +1,8 @@
+.form {
+	/*margin-top: 50px;*/
+	display: flex;
+	align-items: center;
+	/*margin-bottom: 40px;*/
+	width: 100%;
+	gap: 10px;
+}

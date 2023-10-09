@@ -1,0 +1,21 @@
+.button {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 7px 13px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    height: 44px;
+}
+.button:hover {
+    background-color: #364974;
+}
+.button:disabled {
+    opacity: 0.3;
+}
+.button:disabled:hover {
+    cursor: default;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+}
