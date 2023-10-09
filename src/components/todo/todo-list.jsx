@@ -2,13 +2,6 @@ import { TodoItem } from './todo-item';
 
 export const TodoList = ({
 	todoList,
-	isUpdated,
-	onChange,
-	onClick,
-	isDeleted,
-	onClickChange,
-	editableElementId,
-	onBlur,
 }) => {
 	return (
 		<>
@@ -18,13 +11,6 @@ export const TodoList = ({
 					id={id}
 					todo={todo}
 					completed={completed}
-					isUpdated={isUpdated}
-					onChange={onChange}
-					onClick={onClick}
-					isDeleted={isDeleted}
-					onClickChange={onClickChange}
-					editableElementId={editableElementId}
-					onBlur={onBlur}
 				/>
 			))}
 		</>

@@ -1,19 +1,24 @@
 import styles from './todo-item.module.css';
 import { Button } from '../ui/button/button';
 import { InputWithButton } from '../ui/input/input-with-button';
+import {useContext} from "react";
+import {AppContext} from "../../context";
 
 export const TodoItem = ({
 	id,
 	todo,
 	completed,
-	isUpdated,
-	onChange,
-	onClick,
-	isDeleted,
-	onClickChange,
-	editableElementId,
-	onBlur,
 }) => {
+
+	const {
+		isUpdated,
+		onChange,
+		onClick,
+		isDeleted,
+		onClickChange,
+		editableElementId,
+		onBlur
+	} = useContext(AppContext);
 	return (
 		<div key={id} className={styles.item}>
 			<div className={styles.container}>

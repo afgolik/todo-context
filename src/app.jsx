@@ -30,8 +30,18 @@ export const App = () => {
 
 	const onClickChange = (id) => setEditableElementId(id);
 
+	const contextValue = {
+		isUpdated: isUpdated,
+		onChange: requestUpdateStatus,
+		onClick: requestDeleteTodo,
+		isDeleted: isDeleted,
+		onClickChange: onClickChange,
+		editableElementId: editableElementId,
+		onBlur: requestUpdateTodo,
+	};
+
 	return (
-		<AppContext.Provider>
+		<AppContext.Provider value={contextValue}>
 			<div className={styles.app}>
 				<Search onClick={searchingTodo} isSearched={isSearched} onReset={onReset} />
 				<div className={styles.buttonBlock}>
@@ -48,14 +58,6 @@ export const App = () => {
 				{isLoading ? <Loader /> : todoList.length ?
 					<TodoList
 						todoList={sortedTodoList}
-						isUpdated={isUpdated}
-						onChange={requestUpdateStatus}
-						onClick={requestDeleteTodo}
-						isDeleted={isDeleted}
-						isEdited={isEdited}
-						onClickChange={onClickChange}
-						editableElementId={editableElementId}
-						onBlur={requestUpdateTodo}
 					/> :
 					<div className={styles.text}>Список задач пуст</div>
 				}
