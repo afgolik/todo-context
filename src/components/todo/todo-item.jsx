@@ -1,8 +1,8 @@
 import styles from './todo-item.module.css';
 import { Button } from '../ui/button/button';
 import { InputWithButton } from '../ui/input/input-with-button';
-import {useContext} from "react";
-import {AppContext} from "../../context";
+import { useContext } from "react";
+import { TodoContext } from "../../context";
 
 export const TodoItem = ({
 	id,
@@ -18,7 +18,7 @@ export const TodoItem = ({
 		onClickChange,
 		editableElementId,
 		onBlur
-	} = useContext(AppContext);
+	} = useContext(TodoContext);
 	return (
 		<div key={id} className={styles.item}>
 			<div className={styles.container}>

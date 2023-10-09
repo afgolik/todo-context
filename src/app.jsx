@@ -14,7 +14,7 @@ import {
 import { Modal } from './components/ui/modal/modal';
 import { Search } from "./components/ui/search/search";
 import { Button } from "./components/ui/button/button";
-import { AppContext } from "./context";
+import { TodoContext } from "./context";
 
 export const App = () => {
 	const [modalActive, setModalActive] = useState(false);
@@ -30,7 +30,7 @@ export const App = () => {
 
 	const onClickChange = (id) => setEditableElementId(id);
 
-	const contextValue = {
+	const todoContextValue = {
 		isUpdated: isUpdated,
 		onChange: requestUpdateStatus,
 		onClick: requestDeleteTodo,
@@ -41,27 +41,27 @@ export const App = () => {
 	};
 
 	return (
-		<AppContext.Provider value={contextValue}>
-			<div className={styles.app}>
-				<Search onClick={searchingTodo} isSearched={isSearched} onReset={onReset} />
-				<div className={styles.buttonBlock}>
-					<Modal
-						active={modalActive}
-						setActive={setModalActive}
-						initialValue={addInputValue}
-						onChange={setAddInputValue}
-						onClick={requestAddTodo}
-						disabled={isCreated}
-					/>
-					<Button text={isSorted ? 'Не сортировать' : 'Отсортировать'} onClick={sortTodo} className={isSorted ? styles.sortButton : null} />
-				</div>
+		<div className={styles.app}>
+			<Search onClick={searchingTodo} isSearched={isSearched} onReset={onReset} />
+			<div className={styles.buttonBlock}>
+				<Modal
+					active={modalActive}
+					setActive={setModalActive}
+					initialValue={addInputValue}
+					onChange={setAddInputValue}
+					onClick={requestAddTodo}
+					disabled={isCreated}
+				/>
+				<Button text={isSorted ? 'Не сортировать' : 'Отсортировать'} onClick={sortTodo} className={isSorted ? styles.sortButton : null} />
+			</div>
+			<TodoContext.Provider value={todoContextValue}>
 				{isLoading ? <Loader /> : todoList.length ?
 					<TodoList
 						todoList={sortedTodoList}
 					/> :
 					<div className={styles.text}>Список задач пуст</div>
 				}
-			</div>
-		</AppContext.Provider>
+			</TodoContext.Provider>
+		</div>
 	);
 };
